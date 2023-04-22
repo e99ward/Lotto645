@@ -1,4 +1,5 @@
 import sys
+import time
 from PyQt5.QtCore import Qt, QObject, QThread, pyqtSignal, pyqtSlot
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QPushButton, QCheckBox
 from PyQt5.QtWidgets import QHBoxLayout, QVBoxLayout, QMessageBox, QPlainTextEdit
@@ -56,6 +57,7 @@ class Broker(QThread):
                 self.complete.emit(nPred)
                 self.order = False
                 # break
+            time.sleep(3) # magical three seconds
         # print('completed!!')
         # self.complete.emit(nPred)
 
@@ -301,7 +303,8 @@ class App(QWidget):
         #         QMessageBox.Yes, QMessageBox.No)
         if self.w:
             self.w.close()
-    
+
+
 class AnotherWindow(QWidget):
     """
     This "window" will show progess of the prediction.
